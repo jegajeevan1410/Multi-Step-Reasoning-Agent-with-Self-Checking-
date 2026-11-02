@@ -1,0 +1,186 @@
+Example run logs (real outputs from agent.solve, run without an LLM)
+
+==================== Example Run 1 ====================
+Input:
+45 - 18 + 6
+
+Output:
+{
+  "answer": "33",
+  "status": "success",
+  "explanation": "45 - 18 + 6 = 33",
+  "type": "arithmetic",
+  "plan": [
+    "Find the expression",
+    "Apply order of operations",
+    "Give the result"
+  ],
+  "checks": [
+    "re-calculated 45 - 18 + 6 = 33"
+  ],
+  "retries": 0
+}
+
+-------------------------------------------------------
+
+==================== Example Run 2 ====================
+Input:
+12 * 4 / 3
+
+Output:
+{
+  "answer": "16",
+  "status": "success",
+  "explanation": "12 * 4 / 3 = 16",
+  "type": "arithmetic",
+  "plan": [
+    "Find the expression",
+    "Apply order of operations",
+    "Give the result"
+  ],
+  "checks": [
+    "re-calculated 12 * 4 / 3 = 16"
+  ],
+  "retries": 0
+}
+
+-------------------------------------------------------
+
+==================== Example Run 3 ====================
+Input:
+10 + 20 - 33 * 2
+
+Output:
+{
+  "answer": "-36",
+  "status": "success",
+  "explanation": "10 + 20 - 33 * 2 = -36",
+  "type": "arithmetic",
+  "plan": [
+    "Find the expression",
+    "Apply order of operations",
+    "Give the result"
+  ],
+  "checks": [
+    "re-calculated 10 + 20 - 33 * 2 = -36"
+  ],
+  "retries": 0
+}
+
+-------------------------------------------------------
+
+==================== Example Run 4 ====================
+Input:
+2, 4, 8, 16, _
+
+Output:
+{
+  "answer": "32",
+  "status": "success",
+  "explanation": "Each number is x2",
+  "type": "sequence",
+  "plan": [
+    "Check the gaps between numbers",
+    "Check the ratios",
+    "Continue the pattern"
+  ],
+  "checks": [
+    "pattern continues with the answer"
+  ],
+  "retries": 0
+}
+
+-------------------------------------------------------
+
+==================== Example Run 5 ====================
+Input:
+1, 4, 9, 16, _
+
+Output:
+{
+  "answer": "25",
+  "status": "success",
+  "explanation": "Gaps [3, 5, 7] grow by 2",
+  "type": "sequence",
+  "plan": [
+    "Check the gaps between numbers",
+    "Check the ratios",
+    "Continue the pattern"
+  ],
+  "checks": [
+    "pattern continues with the answer"
+  ],
+  "retries": 0
+}
+
+-------------------------------------------------------
+
+==================== Example Run 6 ====================
+Input:
+A train leaves at 14:30 and arrives at 18:05. How long is the journey?
+
+Output:
+{
+  "answer": "3 hours 35 minutes",
+  "status": "success",
+  "explanation": "1085 - 870 = 215 minutes",
+  "type": "time",
+  "plan": [
+    "Convert both times to minutes",
+    "Subtract (add 24 h if negative)",
+    "Convert to hours and minutes"
+  ],
+  "checks": [
+    "start + duration should equal end"
+  ],
+  "retries": 0
+}
+
+-------------------------------------------------------
+
+==================== Example Run 7 ====================
+Input:
+A train leaves at 23:50 and arrives at 00:20. How long is the journey?
+
+Output:
+{
+  "answer": "30 minutes",
+  "status": "success",
+  "explanation": "20 - 1430 = 30 minutes",
+  "type": "time",
+  "plan": [
+    "Convert both times to minutes",
+    "Subtract (add 24 h if negative)",
+    "Convert to hours and minutes"
+  ],
+  "checks": [
+    "start + duration should equal end"
+  ],
+  "retries": 0
+}
+
+-------------------------------------------------------
+
+==================== Example Run 8 ====================
+Input:
+A call needs 45 minutes. Slots: 10:00–10:30, 13:15–14:00, 15:00–16:30.
+
+Output:
+{
+  "answer": "13:15–14:00 and 15:00–16:30",
+  "status": "success",
+  "explanation": "Need 45 min; 10:00–10:30 = 30 min; 13:15–14:00 = 45 min; 15:00–16:30 = 90 min",
+  "type": "scheduling",
+  "plan": [
+    "Find the meeting length",
+    "Measure each slot",
+    "Keep slots that are long enough"
+  ],
+  "checks": [
+    "every slot checked"
+  ],
+  "retries": 0
+}
+
+-------------------------------------------------------
+
